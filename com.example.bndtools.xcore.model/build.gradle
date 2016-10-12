@@ -1,13 +1,16 @@
 plugins {
-    id 'org.xtext.builder' version '1.0.0'
+    id 'org.xtext.builder' version '1.0.12'
+    id 'java'
 }
 
+// Needed for plugin repository
 repositories {
     jcenter()
 }
 
 ext.xtextVersion = "2.10.0"
 
+// Non-plugin dependencies managed via bnd.bnd
 dependencies {
     compile "org.eclipse.xtext:org.eclipse.xtext:${xtextVersion}"
     compile "org.eclipse.xtext:org.eclipse.xtext.xbase:${xtextVersion}"
@@ -38,6 +41,7 @@ xtext {
     sourceSets {
         main {
             srcDir 'model'
+            // Move the generated Xcore output to the src directory
             output {
                 dir(xtext.languages.xcore.generator.outlet, 'src')
             }

@@ -21,10 +21,20 @@ javac.source: 1.8
 javac.target: 1.8
 
 Bundle-Version: 0.0.0.${tstamp}
-Private-Package: \
+# Mirrors what the auto-generated plugin.xml declares
+Export-Package: \
+	com.example.bndtools.xcore.model,\
 	com.example.bndtools.xcore.model.impl,\
 	com.example.bndtools.xcore.model.util
--runrequires: \
-	osgi.identity;filter:='(osgi.identity=org.eclipse.emf.ecore.xcore.lib)',\
-	osgi.identity;filter:='(osgi.identity=org.eclipse.xtext.xbase.lib)'
-Export-Package: com.example.bndtools.xcore.model
+
+# Eclipse-ism
+
+# plugin.xml and its properties are needed
+# To generate these, edit and save Xcore model
+# Model not needed for runtime
+Include-Resource: plugin.xml, plugin.properties, OSGI-OPT/model=model
+
+# The bsn needs to specify the singleton attribute
+Bundle-SymbolicName: ${p};singleton:=true
+# Not needed by integration test
+# Bundle-ActivationPolicy: lazy
