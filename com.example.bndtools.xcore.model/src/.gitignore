@@ -1,0 +1,4 @@
+# Ignore all auto-generated source files
+*
+# But don't ignore me!
+!.gitignore

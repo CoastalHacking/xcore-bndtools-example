@@ -3,8 +3,8 @@
 	bundleManifest="false",
 	updateClasspath="false",
 	modelDirectory="/com.example.bndtools.xcore.model/src",
-	oSGiCompatible="true"
-)
+	oSGiCompatible="true",
+	forceOverwrite="true")
 package com.example.bndtools.xcore.model
 
 class One

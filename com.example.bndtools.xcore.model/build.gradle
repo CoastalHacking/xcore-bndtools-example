@@ -1,16 +1,10 @@
-buildscript {
-  repositories {
-    maven {
-      url "https://jcenter.bintray.com/"
-    }
-  }
-  dependencies {
-    classpath "org.xtext:xtext-gradle-plugin:1.0.12"
-  }
+plugins {
+    id 'org.xtext.builder' version '1.0.0'
 }
 
-apply plugin: "biz.aQute.bnd"
-apply plugin: "org.xtext.builder"
+repositories {
+    jcenter()
+}
 
 ext.xtextVersion = "2.10.0"
 
@@ -24,32 +18,29 @@ dependencies {
     xtextLanguages 'org.eclipse.emf:org.eclipse.emf.codegen.ecore:+'
     xtextLanguages 'org.eclipse.emf:org.eclipse.emf.codegen.ecore.xtext:+'
     xtextLanguages "org.eclipse.xtext:org.eclipse.xtext.ecore:${xtextVersion}"
-	xtextLanguages 'org.eclipse.jdt:org.eclipse.jdt.core:+'
-
+    xtextLanguages 'org.eclipse.jdt:org.eclipse.jdt.core:+'
 }
 
 xtext {
-  repositories {
-    maven {
-      url "https://jcenter.bintray.com/"
+    version = "${xtextVersion}"
+    languages {
+        ecore {
+            setup = 'org.eclipse.xtext.ecore.EcoreSupport'
+        }
+        codegen {
+            setup = 'org.eclipse.emf.codegen.ecore.xtext.GenModelSupport'
+        }
+        xcore {
+            setup = 'org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup'
+            generator.outlet.producesJava = true
+        }
     }
-  }
-      version = "${xtextVersion}"
-      languages {
-          ecore {
-              setup = 'org.eclipse.xtext.ecore.EcoreSupport'
-          }
-          codegen {
-              setup = 'org.eclipse.emf.codegen.ecore.xtext.GenModelSupport'
-          }
-          xcore {
-              setup = 'org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup'
-              generator.outlet.producesJava = true
-          }
-      }
-	sourceSets {
-	    main {
-	        srcDir 'model'
-	    }
-	}
+    sourceSets {
+        main {
+            srcDir 'model'
+            output {
+                dir(xtext.languages.xcore.generator.outlet, 'src')
+            }
+        }
+    }
 }
