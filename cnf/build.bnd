@@ -27,6 +27,33 @@
 		pretty = true; \
 		local = ${build}/release
 
+-plugin.5.Xtext: \
+	aQute.bnd.repository.p2.provider.P2Repository; \
+		url = http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0/; \
+		name = Xtext
+
+-plugin.6.EmfCore: \
+	aQute.bnd.repository.p2.provider.P2Repository; \
+		url = http://download.eclipse.org/modeling/emf/emf/updates/2.10.x/core/S201501230452/; \
+		name = EmfCore
+
+-plugin.7.EmfBase: \
+	aQute.bnd.repository.p2.provider.P2Repository; \
+		url = http://download.eclipse.org/modeling/emf/emf/updates/2.10.x/base/S201501230348/; \
+		name = EmfBase
+
+-plugin.8.EmfXcore: \
+	aQute.bnd.repository.p2.provider.P2Repository; \
+		url = http://download.eclipse.org/modeling/emf/emf/updates/2.10.x/xcore/R201502020452/; \
+		name = EmfXcore
+
+# Downloads everything, caveat emptor
+# Needed for JDT
+-plugin.9.Neon: \
+	aQute.bnd.repository.p2.provider.P2Repository; \
+		url = http://download.eclipse.org/eclipse/updates/4.6/R-4.6.1-201609071200/; \
+		name = Neon
+
 -releaserepo: Release
 -baselinerepo: Release
 

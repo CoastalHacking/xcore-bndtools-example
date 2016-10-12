@@ -1,0 +1,18 @@
+
+@GenModel(
+	bundleManifest="false",
+	updateClasspath="false",
+	modelDirectory="/com.example.bndtools.xcore.model/src",
+	oSGiCompatible="true"
+)
+package com.example.bndtools.xcore.model
+
+class One
+{
+	refers Two two opposite one	
+}
+
+class Two
+{
+	refers One one opposite two
+}
