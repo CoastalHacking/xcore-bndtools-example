@@ -4,7 +4,8 @@
 	updateClasspath="false",
 	modelDirectory="/com.example.bndtools.xcore.model/src",
 	oSGiCompatible="true",
-	forceOverwrite="true")
+	forceOverwrite="true"
+)
 package com.example.bndtools.xcore.model
 
 class One
